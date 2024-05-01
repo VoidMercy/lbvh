@@ -10,8 +10,8 @@ namespace lbvh
 template<typename T>
 struct aabb
 {
-    typename vector_of<T>::type upper;
     typename vector_of<T>::type lower;
+    typename vector_of<T>::type upper;
 };
 
 template<typename T>

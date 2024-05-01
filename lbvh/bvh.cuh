@@ -10,6 +10,7 @@
 #include <thrust/functional.h>
 #include <thrust/scan.h>
 #include <thrust/sort.h>
+#include <thrust/unique.h>
 #include <thrust/fill.h>
 #include <thrust/for_each.h>
 #include <thrust/transform.h>
@@ -320,7 +321,7 @@ class bvh
 
         const auto aabb_whole = thrust::reduce(
             aabbs_.begin() + num_internal_nodes, aabbs_.end(), default_aabb,
-            [] __device__ (const aabb_type& lhs, const aabb_type& rhs) {
+            [] __device__ __host__ (const aabb_type& lhs, const aabb_type& rhs) {
                 return merge(lhs, rhs);
             });
 
